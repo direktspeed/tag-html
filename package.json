@@ -1,0 +1,31 @@
+{
+  "name": "tag-html",
+  "version": "0.0.1",
+  "description": "Efficient, Fast ,Expressive, Extensible HTML templates with JavaScript Tagged Template Literals that render in any Environment",
+  "main": "tag-html.mjs",
+  "scripts": {
+    "test": "node tag-html-test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/direktspeed/tag-html.git"
+  },
+  "keywords": [
+    "lit-html",
+    "html",
+    "lit",
+    "Polymer",
+    "ssr",
+    "tag-html",
+    "tag",
+    "webcomponents",
+    "customelement",
+    "element"
+  ],
+  "author": "Frank Lemanschik <frank@dspeed.eu>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/direktspeed/tag-html/issues"
+  },
+  "homepage": "https://github.com/direktspeed/tag-html#readme"
+}
