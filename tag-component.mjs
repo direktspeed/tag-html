@@ -2,7 +2,8 @@
     A Multi Environment Component Wrapper / Creator
     new Component('tag-tag')
     tag, view, scope
-
+*/
+/*
 Component.extend({
   tag: "my-counter",
   view: `
@@ -73,3 +74,78 @@ tap(()=>{
 // returns component instance or string representation also registers the component if its not!
     */
 
+//A ES Module that runs in the browser and any other environment that returns HTMLElement Conditional
+const ifHTMLElement = typeof HTMLElement !== 'undefined' ? HTMLElement : class HTMLElement { }
+export { ifHTMLElement as HTMLElement };
+const MixinComponent = base=>class extends base {
+    // Used when not using extend or when calling super with arguments
+    constructor(tag = '', template = () => '', data = 'default') {
+        super()
+        this.tagName = tag
+        this.template = template.bind(this)
+        this.data = data
+        // Should Choose to register the element.
+    }
+    render() {
+        const { template, tagName, data } = this
+        const result = template(data)
+        this.innerHTML = result
+        return `<${tagName}>${result}</${tagName}>`
+    }
+}
+
+
+// minimum component can be also customElement
+// customElements can trigger actions on insert
+// customElements can encapsulate dom.
+class myComponent extends MixinComponent(ifHTMLElement) {
+    tagName = 'my-tag'
+    template(data) {
+        return `${data}`
+    }
+    data = 'string'
+}
+/**
+ * About values
+ * they can come from user input
+ * they can come from external source
+ * they can be coded
+ * when a value changes it should call render or not
+ */
+class myListComponent extends MixinComponent(ifHTMLElement) {
+    tagName = 'my-tag'
+    //data should be a array
+    template(data) {
+        return `${data}`
+    }
+    data = 'string'
+}
+
+class pageComponent extends MixinComponent(ifHTMLElement) {
+    tagName = 'my-tag'
+    //data should be a array
+    template(data) {
+        return `${data}`
+    }
+    data = 'string'
+}
+
+
+// function pattern tag-html-component
+function TagHtmlComponent(data) {
+    return html`<p></p>`
+}
+
+//class pattern tag-html-component-class
+class TagHtmlComponentClass {
+    constructor(data) {
+        this.data = data
+    }
+    template() {
+        const { data } = this;
+        return html`<p>${data}`
+    }
+    render() {
+         return this.template()
+    }
+}

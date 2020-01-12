@@ -1,7 +1,10 @@
+// if you use a wirred packager then this could easy get always class {} which is then not useable in browsers
 //A ES Module that runs in the browser and any other environment that returns HTMLElement Conditional
-const ifHTMLElement = typeof HTMLElement !== 'undefined' ? HTMLElement : class HTMLElement { }
+const ifHTMLElement = typeof HTMLElement !== 'undefined' ? HTMLElement : class { }
 export { ifHTMLElement as HTMLElement };
 
+
+export class TagHTML extends ifHTMLElement {}
 /**
  * Example Code
  */

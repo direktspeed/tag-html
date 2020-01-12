@@ -1,8 +1,11 @@
 {
   "name": "tag-html",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Efficient, Fast ,Expressive, Extensible HTML templates with JavaScript Tagged Template Literals that render in any Environment",
   "main": "tag-html.mjs",
+  "type": "module",
+  "module": "tag-html.mjs",
+  "esnext": "tag-html.mjs",
   "scripts": {
     "test": "node tag-html-test.mjs"
   },
@@ -27,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/direktspeed/tag-html/issues"
   },
-  "homepage": "https://github.com/direktspeed/tag-html#readme"
+  "homepage": "https://github.com/direktspeed/tag-html#readme",
+  "dependencies": {
+    "@most/core": "^1.5.0"
+  }
 }
