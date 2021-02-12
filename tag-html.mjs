@@ -26,7 +26,7 @@ const isHtmlElement = obj => ((x)=> x.indexOf('HTML') > -1 && x.indexOf('Element
  * @returns {String} string
  */
 export const html = (...args) => renderString(...args)
-export const renderString = (strArr,...valArr) => renderLiteral(strArr.raw,...valArr)
+export const renderString = (strArr,...valArr) => renderLiteral(strArr.raw ? strArr.raw : strArr ,...valArr);
 // Should be moved into tagged-template-strings
 /**
  * OneLine(literals: TemplateStringsArray, ...placeholders: any[]): string
