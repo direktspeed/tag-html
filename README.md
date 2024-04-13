@@ -61,6 +61,18 @@ document.createElement('tag-name').toString() => '<tag-name></tag-name>';
 '<tag-name></tag-name>'.slice(1).split('>',2)[0].split(" ",2)[0] => 'tag-name';
 
 
+const titleTemplate = title => html`<title>${title}</title>`
+const headTemplate = (titel) => html`<head>${title}</head>`
+headTemplate(titleTemplate('Hello World'))
+
+const createStyleAttributeValue = (style) => Object.entries.map((key,val)=>`${key}:${val}`).join(";");
+const createAttributes = obj => Object.entries.map((key,val)=>`${key}="${val}"`).join(" ");
+
+// creating a string representation of a Element based on tagName and style
+const definedElementTemplate = (tagName,style) => `<${tagName} style="${style}"></${tagName}>`;
+
+definedElementTemplate("hi-mom",createAttributes({ style: createStyleAttributeValue({ color: 'red' }), }));
+
 ```
 
 ## How Components work
