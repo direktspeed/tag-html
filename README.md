@@ -42,12 +42,6 @@ const othertemplatewithdata = data => templateAsFunction(data)
 const helloTemplatePromise = name => htmlPromise`<div>Hello ${Promise.resolve('myName')}!</div>`;
 helloTemplatePromise.then(t=>render(t,el))
 
-
-
-
-
-
-
 getTagName(helloTemplate) //=> 'hello-template'
 html`${asElement(helloTemplate)}` //=> '<hello-template><hello-template>'
 
@@ -60,12 +54,21 @@ defineComponentElement(class HelloTemplate extends ifHTMLElement {
         this.innerHTML = this.innerHTML+'!!!!'
     }
 }) //=> '<hello-template><div>Frank!!!!!</div><hello-template>'
+
+
+
+document.createElement('tag-name').toString() => '<tag-name></tag-name>';
+'<tag-name></tag-name>'.slice(1).split('>',2)[0].split(" ",2)[0] => 'tag-name';
+
+
 ```
 
 ## How Components work
 a tagHtmlComponent is a template so it can be String, Function, Object with a render method eg; class or constructor function
 to make Components Interactive you need to define customElements for the elements in the Component. You can use Components inside
 your customElements but you can't use customElements logic inside Components unless you use some DOM Pollyfill or you run exclusiv in a Browser Environment.
+As design Philiosophy you should always use strings and serializeable methods eg: use attribute changes use data-attributes use inner content do not use slots.
+as they break the concept of string serializability on the server.
 
 ## Old Deprecated How Components
 Its a Constructor that registers as a custom-element if tag is supplyed and we are running in the browser
