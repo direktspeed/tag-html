@@ -70,7 +70,7 @@ const createAttributes = obj => Object.entries.map((key,val)=>`${key}="${val}"`)
 
 // creating a string representation of a Element based on tagName and style
 const definedElementTemplate = (tagName,{ style, innerHTML, ...attributes }) => `<${tagName} ${
- createAttributes({ ...attributes, style:createAttributes(style)})
+ createAttributes({ ...attributes, style:createStyleAttributeValue(style)})
 }>${innerHTML}</${tagName}>`;
 
 definedElementTemplate("hi-mom",{ style: { color: 'red' }, innerHTML: `ùff` });
