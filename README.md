@@ -69,9 +69,9 @@ const createStyleAttributeValue = (style) => Object.entries.map((key,val)=>`${ke
 const createAttributes = obj => Object.entries.map((key,val)=>`${key}="${val}"`).join(" ");
 
 // creating a string representation of a Element based on tagName and style
-const definedElementTemplate = (tagName,style) => `<${tagName} style="${style}"></${tagName}>`;
+const definedElementTemplate = (tagName,{ style, innerHTML, ..._unused }) => `<${tagName} style="${createStyleAttributeValue(style)}">${innerHTML}</${tagName}>`;
 
-definedElementTemplate("hi-mom",createAttributes({ style: createStyleAttributeValue({ color: 'red' }), }));
+definedElementTemplate("hi-mom",createAttributes({ style: { color: 'red' }, innerHTML: `ùff` }));
 
 ```
 
