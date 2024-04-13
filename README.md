@@ -53,7 +53,8 @@ html`${asElement(helloTemplate)}` //=> '<hello-template><hello-template>'
 
 // Components with customElements
 renderAsElement(helloTemplate('Frank')) //=> '<hello-template><div>Frank!</div><hello-template>'
-// you should always code your elements to be self defining like this on load.
+// you should always code your elements to be self defining like this on load. so you always expect them to have content set
+// or you always expect them to have no content set on init.
 defineComponentElement(class HelloTemplate extends ifHTMLElement {
     connectedCallback() {
         this.innerHTML = this.innerHTML+'!!!!'
