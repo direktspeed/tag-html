@@ -1,4 +1,8 @@
-# tag-html html``
+# tag-html html\`\`
+Mainly InterOp patterns for template strings used in nodejs and the browser also some advanced stuff keeping it for usage 
+but i also often find my self simple writing the needed function in place where it is needed. 
+
+
 Is minimalistic ES6+ Templating Engine
 with Optional Helper methods for tasks like Promises, .... it is more light weight then lit-html
 while offering Cross Platform and Environment Support. Eg: WebWorker ServiceWorker NodeJS Browser.
