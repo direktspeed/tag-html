@@ -26,6 +26,13 @@ const protoStr = obj => Object.prototype.toString.call(Object.getPrototypeOf(obj
 const isHtmlElement = obj => ((x)=> x.indexOf('HTML') > -1 && x.indexOf('Element') > -1)(protoStr(obj))
 
 //Render Methods
+export const renderLiteral = (strArr,...valArr) => strArr
+    .map((strItm, i) => `${strItm}${valArr[i] ? `${valArr[i]}` : ''}`) 
+    .join('')
+
+export const renderString = (strArr,...valArr) => renderLiteral(
+    strArr.raw ? strArr.raw : strArr ,...valArr
+);
 
 /**
  * Tagged Template Literal that returns string value
@@ -33,8 +40,8 @@ const isHtmlElement = obj => ((x)=> x.indexOf('HTML') > -1 && x.indexOf('Element
  * @param {...*} valArr
  * @returns {String} string
  */
-export const html = (...args) => renderString(...args)
-export const renderString = (strArr,...valArr) => renderLiteral(strArr.raw ? strArr.raw : strArr ,...valArr);
+export const html = (...args) => renderString(...args);
+
 // Should be moved into tagged-template-strings
 /**
  * OneLine(literals: TemplateStringsArray, ...placeholders: any[]): string
@@ -46,9 +53,7 @@ export const oneline = (strArr, ...valArr) => strArr
    .replace(/(?:\n(?:\s*))+/g, ' ')
    .trim()
    
-export const renderLiteral = (strArr,...valArr) => strArr
-    .map((strItm, i) => `${strItm}${valArr[i] ? `${valArr[i]}` : ''}`) 
-    .join('')
+
 // Promise Support returns a promise that resolved to html``result with all values resolved
 // If one Promise Rejects without Handling it via catch it will throw?
 // This allows timeout feature to return a template in a given time.
@@ -198,6 +203,8 @@ export const strToTagPromise = async str => {
 
 // Accepts only Objects
 // is used as middleware in tagged template literals to reconstruct the keys for a template
+// do not confuse that with Object.entries() => [[key,val],[key,val]]
+// this returns => [[keys...],[vals....]]
 export const ObjToArrays = obj => { 
     const arrays = [[], []] // [[...keysAsString],[...values]]
     for (let key in obj) {
