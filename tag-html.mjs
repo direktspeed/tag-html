@@ -1,5 +1,10 @@
 export { isEqual,isType, isString, isObject, isNumber, isStringObject, isPromise, isFunction } from './is.mjs'
 
+/** 
+ * function is designed to escape special HTML characters in a string to their corresponding HTML entities. 
+ * This is important for preventing cross-site scripting (XSS) attacks, as well as ensuring that special 
+ * characters are rendered correctly in an HTML context.
+ */
 export const escapeHtml = s => (s + '').replace(/[&<>"']/g, m => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;',
     '"': '&quot;', "'": '&#39;'
