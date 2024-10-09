@@ -12,6 +12,9 @@ export const escapeHtml = s => (s + '').replace(/[&<>"']/g, m => ({
 // is helper
 //Returns true if it is a DOM node
 
+/**
+ * function checks whether the given input o is a DOM Node. It uses a few conditions to determine this, handling both environments that have the Node object (typically in browsers) and environments where Node might not exist (like some non-browser environments).
+ */
 export const isNode = o => isObject(Node) ? o instanceof Node : 
     o && isObject(o) && isNumber(o.nodeType) && isString(o.nodeName)
   
