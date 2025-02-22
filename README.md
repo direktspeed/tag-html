@@ -156,4 +156,15 @@ const myAppNoPart = Component.define({
     </body></html>`,
     viewModel: { names: ['Frank', 'Nils'] }
 })
-``` 
+```
+
+Note: ```\``` terminates a template literal without ```\n```
+```js
+Replacement for the online method is
+
+html`my \
+one \
+line
+```
+
+
